@@ -1,4 +1,4 @@
-package control.join;
+package thread.control.join;
 
 import util.ThreadUtils;
 

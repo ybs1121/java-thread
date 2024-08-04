@@ -1,4 +1,4 @@
-package control.yield;
+package thread.control.yield;
 
 import static util.ThreadUtils.sleep;
 

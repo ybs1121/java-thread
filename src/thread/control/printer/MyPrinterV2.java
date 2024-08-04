@@ -1,12 +1,13 @@
-package control.printer;
+package thread.control.printer;
 
 import java.util.Queue;
 import java.util.Scanner;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
 import static util.MyLogger.log;
+import static util.ThreadUtils.sleep;
 
-public class MyPrinterV3 {
+public class MyPrinterV2 {
 
     public static void main(String[] args) {
 
@@ -21,6 +22,7 @@ public class MyPrinterV3 {
             log("프린트 할 문서 입력 (q는 종료 ): ");
             String input = scanner.nextLine();
             if (input.equals("q")) {
+                printer.work = false;
                 printerThread.interrupt();
                 break;
             }
@@ -31,12 +33,13 @@ public class MyPrinterV3 {
 
     static class Printer implements Runnable {
 
+        volatile boolean work = true;
         Queue<String> jobQueue = new ConcurrentLinkedQueue<>();
 
         @Override
         public void run() {
 
-            while (!Thread.interrupted()) {
+            while (work) {
                 try {
                     if (jobQueue.isEmpty()) {
                         continue;
@@ -57,6 +60,7 @@ public class MyPrinterV3 {
         public void addJob(String job) {
             jobQueue.add(job);
         }
+
     }
 
 }
