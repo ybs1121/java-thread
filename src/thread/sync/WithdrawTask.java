@@ -12,6 +12,10 @@ public class WithdrawTask implements Runnable {
 
     @Override
     public void run() {
-        backAccount.withdraw(amount);
+        try {
+            backAccount.withdraw(amount);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
