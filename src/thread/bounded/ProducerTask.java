@@ -23,7 +23,11 @@ public class ProducerTask implements Runnable {
     @Override
     public void run() {
         log("[생성 시도] " + request + " -> " + queue);
-        queue.put(request);
+        try {
+            queue.put(request);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
         log("[생성 종료] " + request + " -> " + queue);
     }
 }
