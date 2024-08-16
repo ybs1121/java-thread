@@ -5,8 +5,10 @@ import static util.MyLogger.log;
 public class SimpleListMainV2 {
 
     public static void main(String[] args) throws InterruptedException {
-        test(new BasicList());
-        test(new SyncList());
+//        test(new BasicList());
+//        test(new SyncList());
+
+        test(new SyncProxyList(new BasicList()));
     }
 
     public static void test(SimpleList list) throws InterruptedException {
