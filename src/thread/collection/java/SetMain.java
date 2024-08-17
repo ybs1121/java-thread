@@ -1,4 +1,4 @@
-package thread.java;
+package thread.collection.java;
 
 import java.util.Set;
 import java.util.concurrent.ConcurrentSkipListSet;

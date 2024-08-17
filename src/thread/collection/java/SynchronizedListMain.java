@@ -1,4 +1,4 @@
-package thread.java;
+package thread.collection.java;
 
 import java.util.ArrayList;
 import java.util.Collections;
